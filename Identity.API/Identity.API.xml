@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Identity.API</name>
+    </assembly>
+    <members>
+        <member name="M:Identity.API.Controllers.UserController.GetUserByIdAsync(System.String)">
+             <summary>
+             Return user
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 GET /users/{id}
+                 
+             </remarks>
+             <param name="id"> user's id</param>
+             <returns>user</returns>
+             <response code="200">If successful returned user</response>
+             <response code="404">If not found user</response> 
+        </member>
+        <member name="M:Identity.API.Controllers.UserController.GetUserByUsernameAsync(System.String)">
+             <summary>
+             Return user
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 GET /users/{username}
+                 
+             </remarks>
+             <param name="username"> Username</param>
+             <returns>user</returns>
+             <response code="200">If successful returned user</response>
+             <response code="404">If not found user</response> 
+        </member>
+        <member name="M:Identity.API.Controllers.UserController.CreateUserAsync(Identity.Domain.DTOs.User.CreateUserDTO)">
+             <summary>
+             Create a new User
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /users
+                 {
+                     "UserName": "Vasy_Pupkin",
+                     "Email": "Pupkin@Vasy.com",
+                     "Password": "ffnfnhD43$",
+                     "PasswordConfirm": "ffnfnhD43$"
+                 }
+                 
+             </remarks>
+             <param name="userDto">user's dto</param>
+             <returns>Created user</returns>
+             <response code="200">If successful created new user</response>
+             <response code="400">If didn't creat new user</response> 
+        </member>
+        <member name="M:Identity.API.Controllers.UserController.DeleteUserAsync">
+             <summary>
+             Delete a specific user.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 DELETE: /users
+                 
+             </remarks>
+             <returns>Status code</returns>
+             <response code="204">If successful delated user</response>
+        </member>
+        <member name="M:Identity.API.Controllers.UserController.ChangePasswordUserAsync(Identity.Domain.DTOs.ChangePasswordDto)">
+             <summary>
+             Change password current user
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 PUT /users/changepassword
+                 {
+                     "OldPassword": "Pass123$",
+                     "NewPassword": "NewPass123$",
+                     "ConfirmNewPassword": "NewPass123$"
+                 }
+                 
+             </remarks>
+             <param name="changePasswordDto">ChangePasswordDto</param>
+             <returns>Status code</returns>
+             <response code="200">If successful changed user's password</response>
+             <response code="400">If failed changed user's password</response>
+        </member>
+    </members>
+</doc>
