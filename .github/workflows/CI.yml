@@ -24,8 +24,8 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.301
-      - name: Change directory
-        run: cd 
+      - name: Add nuget token
+        run: sed -e 's/{USERNAME}/${{ secrets.USERNAME }}/; s/{GITLUB_NUGET_TOKEN}/${{ secrets.NUGET_TOKEN }}/' ./nuget.config
       - name: Install dependencies
         run: dotnet restore
       - name: Build
