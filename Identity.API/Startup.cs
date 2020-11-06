@@ -28,6 +28,7 @@ using Identity.Infrastructure.Implementation;
 using Common.Implementations.Extensions;
 using System.Reflection;
 using Common.Domain.Options;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Identity.API
 {
@@ -72,14 +73,16 @@ namespace Identity.API
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
+            X509Certificate2 cert = new X509Certificate2("./certificate.pfx");
+
             var builder = services.AddIdentityServer(options =>
             {
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseInformationEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
+                options.Events.RaiseErrorEvents = false;
+                options.Events.RaiseInformationEvents = false;
+                options.Events.RaiseFailureEvents = false;
+                options.Events.RaiseSuccessEvents = false;
             })
-            .AddDeveloperSigningCredential()
+            .AddSigningCredential(cert)
             .AddAspNetIdentity<User>()
             .AddConfigurationStore(options =>
             {
@@ -145,6 +148,8 @@ namespace Identity.API
             app.UseRouting();
 
             app.UseIdentityServer();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

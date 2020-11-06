@@ -185,7 +185,7 @@ namespace Identity.API.Controllers
             return Ok();
         }
 
-        [Authorize(Policy = "internal")]
+        //[Authorize(Policy = "internal")]
         [HttpGet("{username}/exist")]
         public async Task<ActionResult<string>> IsUserExistAsync(string username)
         {

@@ -26,7 +26,7 @@ namespace Identity.Persistence.Seed
         {
             return new List<ApiResource>
             {
-                new ApiResource("identity","API Identity"),
+                new ApiResource("identity","API Identity") { ApiSecrets = { new Secret("secret".Sha512()) } },
                 new ApiResource("chat", "API Chat"),
                 new ApiResource("realtime", "API Realtime")
             };
