@@ -25,7 +25,7 @@ jobs:
         with:
           dotnet-version: 3.1.301
       - name: Add nuget token
-        run: sed -e 's/{USERNAME}/${{ secrets.USERNAME }}/; s/{GITLUB_NUGET_TOKEN}/${{ secrets.NUGET_TOKEN }}/' ./nuget.config
+        run: sed -e 's/{USERNAME}/${{ secrets.USERNAME }}/; s/{GITLUB_NUGET_TOKEN}/${{ secrets.GITHUB_TOKEN }}/' ./nuget.config
       - name: Install dependencies
         run: dotnet restore
       - name: Build
